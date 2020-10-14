@@ -45,6 +45,10 @@ class User {
   Picture pictureCover;
   String email;
   String phone;
+  String idRole;
+  String usId;
+  int rank;
+  String type;
 
   User({
     this.id,
@@ -87,6 +91,10 @@ class User {
     this.pictureProfile,
     this.email,
     this.phone,
+    this.idRole,
+    this.usId,
+    this.rank,
+    this.type,
   });
 
   factory User.fromJson(String str) => User.fromMap(json.decode(str));
@@ -94,7 +102,7 @@ class User {
   String toJson() => json.encode(toMap());
 
   factory User.fromMap(Map<String, dynamic> json) => new User(
-        id: json["id_profile"] == null ? null : json["id_profile"],
+        id: json["_id"] == null ? null : json["_id"],
         acceptedMarketing: json['accepted_marketing'] == null
             ? false
             : json["accepted_marketing"],
@@ -195,10 +203,18 @@ class User {
             : Picture.fromMap(json["picture_cover"]),
         email: json["email"] == null ? null : json["email"],
         phone: json["phone"] == null ? null : json["phone"],
+        idRole: json["id_role"] == null ? null : json["id_role"],
+        usId: json["idUser"] == null ? null : json["idUser"],
+        rank: json["rank"] == null
+            ? null
+            : json["rank"].runtimeType == int
+                ? json["rank"]
+                : (json["rank"] as double).toInt(),
+        type: json["type"] == null ? null : json["type"],
       );
 
   Map<String, dynamic> toMap() => {
-        "id_profile": id == null ? null : id,
+        "_id": id == null ? null : id,
         "accepted_marketing":
             acceptedMarketing == null ? null : acceptedMarketing,
         "user_deleted": deleted == null ? null : deleted,
@@ -249,5 +265,9 @@ class User {
         "picture_cover": pictureCover == null ? null : pictureCover.toMap(),
         "email": email == null ? null : email,
         "phone": phone == null ? null : phone,
+        "idUser": usId == null ? null : usId,
+        "id_role": idRole == null ? null : idRole,
+        "type": type == null ? null : type,
+        "rank": rank == null ? null : rank,
       };
 }
