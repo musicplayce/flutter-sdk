@@ -1,5 +1,10 @@
 # Changelog
 
+#1.0.3
+### Changed
+- User model
+- Get user endpoint
+
 #1.0.2
 ### Added
 - Adding analytics models
@@ -176,8 +181,3 @@
 ### Added
 - Initial version
 - Add auth routes
-
-## 1.0.3
-### Changed
-- User model
-- Get user endpoint
